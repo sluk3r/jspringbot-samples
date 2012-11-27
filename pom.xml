@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2012. JSpringBot. All Rights Reserved.
+  ~
+  ~ See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The JSpringBot licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+ 
+  <groupId>org.jspringbot</groupId>
+  <artifactId>jspringbot-samples</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>jspringbot-samples</name>
+  <packaging>pom</packaging>
+
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Shiela D. Buitizon</name>
+      <email>badong2210@yahoo.com</email>
+    </developer>
+  </developers>
+
+  <distributionManagement>
+    <repository>
+      <id>repo</id>
+      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshot-repo</id>
+      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>snapshots-repo</id>
+      <name>badong2210 github mvn-snapshots-repo</name>
+      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>snapshots-repo</id>
+      <name>badong2210 github mvn-snapshots-repo</name>
+      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
+    </repository>
+    <repository>
+      <id>releases-repo</id>
+      <name>badong2210 github mvn-releases-repo</name>
+      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/releases/</url>
+    </repository>
+    <repository>
+      <id>mvnsearch</id>
+      <url>http://www.mvnsearch.org/maven2</url>
+    </repository>
+    <repository>
+      <id>jboss</id>
+      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+    </repository>
+    <repository>
+      <id>codehaus.org</id>
+      <url>http://repository.codehaus.org/</url>
+    </repository>
+    <repository>
+      <id>sonatype-releases</id>
+      <name>Sonatype Releases Repository</name>
+      <url>http://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+  </repositories>
+
+
+  <modules>
+    <module>jspringbot-sample-selenium</module>
+  </modules>
+</project>
