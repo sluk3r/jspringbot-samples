@@ -1,0 +1,24 @@
+*** Settings ***
+Library     org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
+Resource    ../http-resources.txt
+
+*** Test Cases ***
+Wunderground API XML Test
+    [Tags]    all   wundergroundapi
+    Create HTTP Get Request  http://api.wunderground.com/api/78aa96563b9ec435/conditions/q/CA/San_Francisco.xml
+    Invoke HTTP Request
+    Response Status Code Should Be OK
+    HTTP Response Should Be XML
+    Response Header Content Type Should Be XML
+    XPath Text Content Should Be Equal  //response/current_observation/display_location/city    San Francisco
+    XPath Text Content Should Be Equal  //response/current_observation/display_location/state   CA
+
+Wunderground API JSON Test
+    [Tags]    all   wundergroundapi
+    Create HTTP Get Request  http://api.wunderground.com/api/78aa96563b9ec435/conditions/q/CA/San_Francisco.json
+    Invoke HTTP Request
+    Response Status Code Should Be OK
+    HTTP Response Should Be Json
+    Response Header Content Type Should Be Json
+    Json Value Should Be    current_observation.display_location.city   San Francisco
+    Json Value Should Be    current_observation.display_location.state  CA

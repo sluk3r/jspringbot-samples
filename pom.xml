@@ -98,5 +98,6 @@
 
   <modules>
     <module>jspringbot-sample-selenium</module>
+    <module>http</module>
   </modules>
 </project>
