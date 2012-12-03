@@ -1,0 +1,17 @@
+*** Settings ***
+Library     org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
+Resource    ../selenium-resources.txt
+
+*** Test Cases ***
+Navigate Menus on jSpringBot
+    [Tags]    all   jspringbot-navigation
+    Navigate To             http://badong2210.github.com/jspringbot/
+    Capture Screenshot
+    Element Text Should Be  css=h1  jSpringBot
+    Click Link              text=Getting started
+    Capture Screenshot
+    Element Text Should Be  css=h1  Getting started
+    Click Link              text=Tutorials
+    Capture Screenshot
+    Element Text Should Be  css=h1  Tutorials
+
