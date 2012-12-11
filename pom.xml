@@ -80,7 +80,7 @@
   </build>
 
   <modules>
-    <module>http</module>
-    <module>selenium</module>
+    <module>http-wundergroundapi</module>
+    <module>selenium-google</module>
   </modules>
 </project>
