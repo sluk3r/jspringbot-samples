@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
- <parent>
+  <parent>
     <groupId>org.jspringbot</groupId>
     <artifactId>jspringbot-samples</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -16,50 +16,6 @@
   <packaging>jar</packaging>
   <name>selenium</name>
 
-  <properties>
-    <tag>all</tag>
-    <noLog>false</noLog>
-    <noReport>false</noReport>
-  </properties>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>snapshots-repo</id>
-      <name>badong2210 github mvn-snapshots-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <repositories>
-    <repository>
-      <id>snapshots-repo</id>
-      <name>badong2210 github mvn-snapshots-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
-    </repository>
-    <repository>
-      <id>releases-repo</id>
-      <name>badong2210 github mvn-releases-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/releases/</url>
-    </repository>
-    <repository>
-      <id>mvnsearch</id>
-      <url>http://www.mvnsearch.org/maven2</url>
-    </repository>
-    <repository>
-      <id>jboss</id>
-      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-    </repository>
-    <repository>
-      <id>codehaus.org</id>
-      <url>http://repository.codehaus.org/</url>
-    </repository>
-    <repository>
-      <id>sonatype-releases</id>
-      <name>Sonatype Releases Repository</name>
-      <url>http://oss.sonatype.org/content/repositories/releases/</url>
-    </repository>
-  </repositories>
-
   <build>
     <testResources>
       <testResource>
@@ -70,31 +26,16 @@
 
     <plugins>
       <plugin>
-        <groupId>com.googlecode.robotframework-maven-plugin</groupId>
-        <artifactId>robotframework-maven-plugin</artifactId>
-        <version>3.0.0-SNAPSHOT</version>
+        <groupId>org.jspringbot</groupId>
+        <artifactId>jspringbot-maven-plugin</artifactId>
         <executions>
           <execution>
             <phase>integration-test</phase>
             <goals>
               <goal>run</goal>
             </goals>
-            <configuration>
-              <includes>
-                <include>${tag}</include>
-              </includes>
-              <noLog>${noLog}</noLog>
-              <noReport>${noReport}</noReport>
-            </configuration>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
   </build>

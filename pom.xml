@@ -23,7 +23,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
- 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <groupId>org.jspringbot</groupId>
   <artifactId>jspringbot-samples</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -46,55 +51,33 @@
     </developer>
   </developers>
 
-  <distributionManagement>
-    <repository>
-      <id>repo</id>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>snapshot-repo</id>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
+  <properties>
+    <tag>all</tag>
+  </properties>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>snapshots-repo</id>
-      <name>badong2210 github mvn-snapshots-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
-    </pluginRepository>
-  </pluginRepositories>
+  <build>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </testResource>
+    </testResources>
 
-  <repositories>
-    <repository>
-      <id>snapshots-repo</id>
-      <name>badong2210 github mvn-snapshots-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/snapshots/</url>
-    </repository>
-    <repository>
-      <id>releases-repo</id>
-      <name>badong2210 github mvn-releases-repo</name>
-      <url>https://raw.github.com/badong2210/jspringbot-mvn-repo/master/releases/</url>
-    </repository>
-    <repository>
-      <id>mvnsearch</id>
-      <url>http://www.mvnsearch.org/maven2</url>
-    </repository>
-    <repository>
-      <id>jboss</id>
-      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-    </repository>
-    <repository>
-      <id>codehaus.org</id>
-      <url>http://repository.codehaus.org/</url>
-    </repository>
-    <repository>
-      <id>sonatype-releases</id>
-      <name>Sonatype Releases Repository</name>
-      <url>http://oss.sonatype.org/content/repositories/releases/</url>
-    </repository>
-  </repositories>
-
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jspringbot</groupId>
+          <artifactId>jspringbot-maven-plugin</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <configuration>
+            <includes>
+              <include>${tag}</include>
+            </includes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <modules>
     <module>http</module>
