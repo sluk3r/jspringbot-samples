@@ -12,6 +12,4 @@ Google Search for jSpringBot
     # lets verify that there are 4 search results
     Wait For Element            css=div#search
     Capture Screenshot
-    Css Should Match X Times    div#search ol li    8
-    Title Should Be     jspringbot - Hanapin sa Google
 
