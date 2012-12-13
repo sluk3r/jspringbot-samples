@@ -81,7 +81,7 @@
 
   <bean name="dbHelper" class="org.jspringbot.keyword.db.DbHelper" init-method="begin" destroy-method="rollback">
     <constructor-arg ref="sessionFactory"/>
-    <property name="querySource" value="classpath:queries.properties"/>
+    <property name="querySource" value="classpath:queries.xml"/>
     <property name="useSchemaSyntax" value="set schema %s"/>
   </bean>
 
