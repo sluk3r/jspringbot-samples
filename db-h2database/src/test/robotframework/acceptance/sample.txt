@@ -1,0 +1,30 @@
+*** Settings ***
+Library         org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
+Test Setup      DB Setup
+Test Tear Down  DB Tear Down
+Resource        ../db-resources.txt
+
+*** Test Cases ***
+Add And Verify Accounts
+    [Tags]      all     add-verify
+    Add Account             account1    ${empty}   test-user
+    Add Account             account2    ${empty}   test-user
+    Verify That Added Accounts Exists
+
+Add And Delete Accounts
+    [Tags]      all     add-delete
+    Add Account             account1    ${empty}   test-user
+    Account Size Should Be  1
+    Add Account             account2    ${empty}   test-user
+    Account Size Should Be  2
+    Delete All Accounts
+    Account Size Should Be  0
+    Add Account             account1    ${empty}   test-user
+    Account Size Should Be  1
+
+
+*** Keywords ***
+Verify That Added Accounts Exists
+    Verify Account By Name Should Exist     account1
+    Verify Account By Name Should Exist     account2
+    Account Size Should Be                  2

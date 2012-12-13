@@ -44,31 +44,46 @@
     </license>
   </licenses>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>c5-public-repository</id>
+      <url>http://mvn.carbonfive.com/public</url>
+    </repository>
+  </repositories>
+
   <developers>
     <developer>
       <name>Shiela D. Buitizon</name>
       <email>badong2210@yahoo.com</email>
     </developer>
+    <developer>
+      <name>Alvin R. de Leon</name>
+      <email>alvinrdeleon@me.com</email>
+    </developer>
   </developers>
 
   <properties>
     <tag>all</tag>
+    <jspringbot.version>1.0-SNAPSHOT</jspringbot.version>
+    <com.h2database.version>1.3.168</com.h2database.version>
+    <db-migration.version>0.9.9-m5</db-migration.version>
   </properties>
 
   <build>
-    <testResources>
-      <testResource>
-        <directory>src/test/resources</directory>
-        <filtering>true</filtering>
-      </testResource>
-    </testResources>
-
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.jspringbot</groupId>
           <artifactId>jspringbot-maven-plugin</artifactId>
-          <version>1.0-SNAPSHOT</version>
+          <version>${jspringbot.version}</version>
           <configuration>
             <includes>
               <include>${tag}</include>
@@ -79,7 +94,39 @@
     </pluginManagement>
   </build>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jspringbot</groupId>
+        <artifactId>jspringbot-selenium</artifactId>
+        <version>${jspringbot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jspringbot</groupId>
+        <artifactId>jspringbot-http</artifactId>
+        <version>${jspringbot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jspringbot</groupId>
+        <artifactId>jspringbot-db</artifactId>
+        <version>${jspringbot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${com.h2database.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>com.carbonfive.db-support</groupId>
+        <artifactId>db-migration</artifactId>
+        <version>${db-migration.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
+    <module>db-h2database</module>
     <module>http-wundergroundapi</module>
     <module>selenium-google</module>
   </modules>

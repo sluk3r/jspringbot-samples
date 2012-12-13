@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>selenium-google</artifactId>
+  <artifactId>db-h2database</artifactId>
   <packaging>jar</packaging>
-  <name>selenium-google</name>
+  <name>db-h2database</name>
 
   <build>
     <plugins>
@@ -33,7 +33,15 @@
   <dependencies>
     <dependency>
       <groupId>org.jspringbot</groupId>
-      <artifactId>jspringbot-selenium</artifactId>
+      <artifactId>jspringbot-db</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.carbonfive.db-support</groupId>
+      <artifactId>db-migration</artifactId>
     </dependency>
   </dependencies>
 </project>

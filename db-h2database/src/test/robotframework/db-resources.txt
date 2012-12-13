@@ -1,0 +1,44 @@
+*** Settings ***
+Library           org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
+
+*** Variables ***
+${DELETE_ACCOUNTS_QUERY}            delete.accounts
+${ADD_ACCOUNT_QUERY}                insert.account
+${VERIFY_ACCOUNT_QUERY}             verify.account.by.name
+${COUNT_ACCOUNTS_QUERY}             get.account.size
+${INSERT_AFFECTED_ROWS_EXPECTED}    1
+
+
+*** Keywords ***
+DB Setup
+    Begin
+    Delete All Accounts
+
+DB TearDown
+    Rollback
+
+Account Size Should Be
+    [Arguments]     ${size}
+    Create Query By Name     ${COUNT_ACCOUNTS_QUERY}
+    Execute Query
+    Projected Count Should Be   ${size}
+
+Delete All Accounts
+   Create Query By Name     ${DELETE_ACCOUNTS_QUERY}
+   Execute Update
+
+Add Account
+    [Arguments]     ${accountName}     ${description}      ${userName}
+    Create Query By Name    ${ADD_ACCOUNT_QUERY}
+    Set String Parameter    name           ${accountName}
+    Set String Parameter    description    ${description}
+    Set String Parameter    userName       ${userName}
+    ${affectedRows}=    Execute Update
+    Should Be Equal As Integers     ${affectedRows}     ${INSERT_AFFECTED_ROWS_EXPECTED}   There should ${INSERT_AFFECTED_ROWS_EXPECTED} affected rows.
+
+Verify Account By Name Should Exist
+    [Arguments]     ${accountName}
+    Create Query By Name    ${VERIFY_ACCOUNT_QUERY}
+    Set String Parameter    name           ${accountName}
+    Execute Query
+    Projected Count Is Not Zero
