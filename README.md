@@ -37,6 +37,8 @@ Running per sample project
     mvn clean integration-test
 ```
 
+3. View the generated report and logs from browser.
+
 ## Author
 
 Designed and built by [Shiela D. Buitizon](https://github.com/badong2210/).
