@@ -5,9 +5,7 @@ Resource    ../http-resources.txt
 *** Test Cases ***
 Wunderground API XML Test
     [Tags]    all   wundergroundapi
-    Create HTTP Get Request  http://api.wunderground.com/api/78aa96563b9ec435/conditions/q/CA/San_Francisco.xml
-    Invoke HTTP Request
-    Response Status Code Should Be OK
+    Create and Invoke Request           /CA/San_Francisco.xml
     HTTP Response Should Be XML
     Response Header Content Type Should Be XML
     XPath Text Content Should Be Equal  //response/current_observation/display_location/city    San Francisco
@@ -15,9 +13,7 @@ Wunderground API XML Test
 
 Wunderground API JSON Test
     [Tags]    all   wundergroundapi
-    Create HTTP Get Request  http://api.wunderground.com/api/78aa96563b9ec435/conditions/q/CA/San_Francisco.json
-    Invoke HTTP Request
-    Response Status Code Should Be OK
+    Create and Invoke Request           /CA/San_Francisco.json
     HTTP Response Should Be Json
     Response Header Content Type Should Be Json
     Json Value Should Be    current_observation.display_location.city   San Francisco
