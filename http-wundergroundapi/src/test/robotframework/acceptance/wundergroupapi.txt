@@ -1,5 +1,4 @@
 *** Settings ***
-Library     org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
 Resource    ../http-resources.txt
 
 *** Test Cases ***
@@ -8,13 +7,15 @@ Wunderground API XML Test
     Create and Invoke Request           /CA/San_Francisco.xml
     HTTP Response Should Be XML
     Response Header Content Type Should Be XML
-    XPath Text Content Should Be Equal  //response/current_observation/display_location/city    San Francisco
-    XPath Text Content Should Be Equal  //response/current_observation/display_location/state   CA
+    XML XPath Text Content Should Be Equal  //response/current_observation/display_location/city    San Francisco
+    XML XPath Text Content Should Be Equal  //response/current_observation/display_location/state   CA
 
 Wunderground API JSON Test
     [Tags]    all   wundergroundapi
     Create and Invoke Request           /CA/San_Francisco.json
     HTTP Response Should Be Json
     Response Header Content Type Should Be Json
-    Json Value Should Be    current_observation.display_location.city   San Francisco
-    Json Value Should Be    current_observation.display_location.state  CA
+    ${ascCookie}=       Get HTTP Cookie Value   ASC
+    Log    ${ascCookie}
+    Json Value Should Be Equal    current_observation.display_location.city   San Francisco
+    Json Value Should Be Equal   current_observation.display_location.state  CA
