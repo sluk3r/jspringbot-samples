@@ -1,5 +1,5 @@
 *** Settings ***
-Library           org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
+Library           JSpringBotGlobal
 
 *** Variables ***
 ${DELETE_ACCOUNTS_QUERY}            delete.accounts
@@ -11,34 +11,34 @@ ${INSERT_AFFECTED_ROWS_EXPECTED}    1
 
 *** Keywords ***
 DB Setup
-    Begin
+    DB Begin
     Delete All Accounts
 
 DB TearDown
-    Rollback
+    DB Rollback
 
 Account Size Should Be
     [Arguments]     ${size}
-    Create Query By Name     ${COUNT_ACCOUNTS_QUERY}
-    Execute Query
-    Projected Count Should Be   ${size}
+    Create DB Query By Name     ${COUNT_ACCOUNTS_QUERY}
+    Execute DB Query
+    DB Projected Count Should Be   ${size}
 
 Delete All Accounts
-   Create Query By Name     ${DELETE_ACCOUNTS_QUERY}
-   Execute Update
+   Create DB Query By Name     ${DELETE_ACCOUNTS_QUERY}
+   Execute DB Update
 
 Add Account
     [Arguments]     ${accountName}     ${description}      ${userName}
-    Create Query By Name    ${ADD_ACCOUNT_QUERY}
-    Set String Parameter    name           ${accountName}
-    Set String Parameter    description    ${description}
-    Set String Parameter    userName       ${userName}
-    ${affectedRows}=    Execute Update
+    Create DB Query By Name    ${ADD_ACCOUNT_QUERY}
+    Set DB String Parameter    name           ${accountName}
+    Set DB String Parameter    description    ${description}
+    Set DB String Parameter    userName       ${userName}
+    ${affectedRows}=    Execute DB Update
     Should Be Equal As Integers     ${affectedRows}     ${INSERT_AFFECTED_ROWS_EXPECTED}   There should ${INSERT_AFFECTED_ROWS_EXPECTED} affected rows.
 
 Verify Account By Name Should Exist
     [Arguments]     ${accountName}
-    Create Query By Name    ${VERIFY_ACCOUNT_QUERY}
-    Set String Parameter    name           ${accountName}
-    Execute Query
-    Projected Count Is Not Zero
+    Create DB Query By Name    ${VERIFY_ACCOUNT_QUERY}
+    Set DB String Parameter    name           ${accountName}
+    Execute DB Query
+    DB Projected Count Is Not Zero

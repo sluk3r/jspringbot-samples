@@ -1,5 +1,4 @@
 *** Settings ***
-Library         org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
 Test Setup      DB Setup
 Test Tear Down  DB Tear Down
 Resource        ../db-resources.txt
