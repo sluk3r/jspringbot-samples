@@ -1,5 +1,4 @@
 *** Settings ***
-Library     org.jspringbot.spring.GlobalSpringLibrary    spring/spring-global.xml
 Resource    ../selenium-resources.txt
 
 *** Test Cases ***
