@@ -7,8 +7,7 @@ Google Search for jSpringBot
     # navigate to google and search for jSpringBot
     Navigate To     http://www.google.com/
     Input Text      css=input[name='q']  jSpringBot
-    Click Button    css=button#gbqfb
     # lets verify that there are 4 search results
-    Wait For Element            css=div#search
-    Capture Screenshot
+    Wait For Element            css=#search
+    Element Capture Screenshot  css=#search
 
